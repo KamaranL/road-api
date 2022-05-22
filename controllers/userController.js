@@ -29,10 +29,10 @@ class UserController {
 
   queryUsers = (req, res) => {
     let query = `(&(objectClass=user)(${req.params.query}))`
-    ad.findUsers(query, (err, groups) => {
+    ad.findUsers(query, (err, users) => {
       if (err) res.status(500).json(err)
-      if (!groups) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.sAMAccountName}' not found` })
-      else res.json(groups)
+      if (!users) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.sAMAccountName}' not found` })
+      else res.json(users)
     })
   }
 
