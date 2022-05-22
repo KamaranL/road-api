@@ -1,8 +1,8 @@
 "use-strict";
 
-import UserRouter from "../routes/userRouter.js"
-import GroupRouter from "../routes/groupRouter.js"
-import express from "express"
+import UserRouter from "../routes/userRouter.js";
+import GroupRouter from "../routes/groupRouter.js";
+import express from "express";
 
 let appRouter = express.Router({ mergeParams: true });
 
