@@ -1,5 +1,7 @@
-import { config } from "dotenv"; config()
-import { env } from "process"
+"use strict";
+
+import { config } from "dotenv"; config();
+import { env } from "process";
 import ActiveDirectory from "activedirectory2";
 
 const activeDirectory = new ActiveDirectory({
@@ -10,9 +12,9 @@ const activeDirectory = new ActiveDirectory({
   password: env.AD2_PASS,
   attributes: {
     user: [],
-    group: [ 'dn', 'cn', 'description', 'member', 'distinguishedName', 'objectCategory' ],
+    group: [ "dn", "cn", "description", "member", "distinguishedName", "objectCategory" ],
   },
 
 });
 
-export default activeDirectory
+export default activeDirectory;
