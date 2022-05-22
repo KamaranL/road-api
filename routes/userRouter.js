@@ -1,6 +1,8 @@
-import UserController from '../controllers/userController.js'
-import logger from '../utils/logger.js'
-import express from 'express'
+"use-strict";
+
+import UserController from "../controllers/userController.js";
+import logger from "../utils/logger.js";
+import express from "express";
 
 let router = express.Router({ mergeParams: true });
 
@@ -13,11 +15,11 @@ class UserRouter {
       logger.route({ userController, req, res });
       next();
     })
-    .get('/', userController.getAllUsers)
-    .get('/_query.:query', userController.queryUsers)
-    .get('/:sAMAccountName.:attribute', userController.getUserAttribute)
-    .get('/:sAMAccountName', userController.getUser);
+    .get("/", userController.getAllUsers)
+    .get("/_query.:query", userController.queryUsers)
+    .get("/:sAMAccountName.:attribute", userController.getUserAttribute)
+    .get("/:sAMAccountName", userController.getUser);
 
 }
 
-export default UserRouter
+export default UserRouter;
