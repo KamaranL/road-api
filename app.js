@@ -1,3 +1,5 @@
+"use-strict";
+
 import { config } from "dotenv"; config();
 import { env } from "process";
 import express from "express";
