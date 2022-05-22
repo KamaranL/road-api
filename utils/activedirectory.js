@@ -1,6 +1,6 @@
-import { config } from 'dotenv'; config()
-import { env } from 'process'
-import ActiveDirectory from 'activedirectory2';
+import { config } from "dotenv"; config()
+import { env } from "process"
+import ActiveDirectory from "activedirectory2";
 
 const activeDirectory = new ActiveDirectory({
 

@@ -15,8 +15,9 @@ class UserRouter {
             })
             .get('/', userController.getAllUsers)
             .get('/_query.:query', userController.queryUsers)
-            .get('/:samaccountname.memberOf', userController.getMemberOf)
-            .get('/:samaccountname', userController.getUser);
+            .get('/:sAMAccountName.:attribute', userController.getUserAttribute)
+            .get('/:sAMAccountName', userController.getUser)
+
 }
 
 export default UserRouter
