@@ -19,6 +19,7 @@ class GroupRouter {
     .get("/_query.:query", groupController.queryGroups)
     .get("/:cn.:attribute", groupController.getGroupAttribute)
     .get("/:cn", groupController.getGroup);
+
 }
 
 export default GroupRouter;
