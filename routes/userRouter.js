@@ -9,14 +9,14 @@ const userController = new UserController();
 class UserRouter {
 
   routes = router
-            .use((req, res, next) => {
-              logger.route({ userController, req, res });
-              next();
-            })
-            .get('/', userController.getAllUsers)
-            .get('/_query.:query', userController.queryUsers)
-            .get('/:sAMAccountName.:attribute', userController.getUserAttribute)
-            .get('/:sAMAccountName', userController.getUser)
+    .use((req, res, next) => {
+      logger.route({ userController, req, res });
+      next();
+    })
+    .get('/', userController.getAllUsers)
+    .get('/_query.:query', userController.queryUsers)
+    .get('/:sAMAccountName.:attribute', userController.getUserAttribute)
+    .get('/:sAMAccountName', userController.getUser);
 
 }
 
