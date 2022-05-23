@@ -1,6 +1,8 @@
-import { config } from 'dotenv'; config()
-import { env } from 'process'
-import activeDirectory from '../utils/activedirectory.js'
+"use-strict";
+
+import { config } from "dotenv"; config();
+import { env } from "process";
+import activeDirectory from "../utils/activedirectory.js";
 
 const debug = {
 
@@ -41,6 +43,6 @@ const debug = {
 
   }
 
-}
+};
 
-export default debug
+export default debug;
