@@ -1,5 +1,7 @@
-import bodyParser from 'body-parser'
-import appRouter from '../utils/router.js'
+"use strict";
+
+import bodyParser from "body-parser";
+import appRouter from "../utils/router.js";
 
 const middlewares = [
 
@@ -9,4 +11,4 @@ const middlewares = [
 
 ];
 
-export default middlewares
+export default middlewares;
