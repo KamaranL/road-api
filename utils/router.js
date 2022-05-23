@@ -1,4 +1,4 @@
-"use-strict";
+"use strict";
 
 import UserRouter from "../routes/userRouter.js";
 import GroupRouter from "../routes/groupRouter.js";

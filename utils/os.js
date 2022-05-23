@@ -1,6 +1,8 @@
-import { networkInterfaces } from 'os';
+"use strict";
 
-const os =  {
+import { networkInterfaces } from "os";
+
+const os = {
 
   net: {
 
@@ -10,19 +12,19 @@ const os =  {
 
       for (let name of Object.keys(nets)) {
         for (let net of nets[name]) {
-          if (net.family === 'IPv4') {
+          if (net.family === "IPv4") {
             if (!results[name]) {
-              results[name] = []
+              results[name] = [];
             }
-            results[name].push(net)
+            results[name].push(net);
           }
         }
       }
-      return results
+      return results;
     },
 
-  }
+  },
 
-}
+};
 
-export default os
+export default os;
