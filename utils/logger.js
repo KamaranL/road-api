@@ -1,6 +1,8 @@
-import { config } from 'dotenv'; config()
-import { env } from 'process'
-import fs from 'node:fs'
+"use strict";
+
+import { config } from "dotenv"; config();
+import { env } from "process";
+import fs from "node:fs";
 
 const logger = {
 
@@ -21,14 +23,14 @@ const logger = {
           day = date.getDate();
 
         let
-          yyyy = ((year < 10) ? '0' + year : year),
-          MM = ((month < 10) ? '0' + month : month),
-          dd = ((day < 10) ? '0' + day : day);
+          yyyy = ((year < 10) ? "0" + year : year),
+          MM = ((month < 10) ? "0" + month : month),
+          dd = ((day < 10) ? "0" + day : day);
 
-        return `${yyyy}-${MM}-${dd}`
+        return `${yyyy}-${MM}-${dd}`;
       }
 
-      return formatDate(new Date())
+      return formatDate(new Date());
     },
 
     timestamp: () => {
@@ -42,31 +44,31 @@ const logger = {
           tz = `UTC-0${(date.getTimezoneOffset()/60)}.00`;
 
         let
-          hh = ((hour < 10) ? '0' + hour : hour),
-          mm = ((minutes < 10) ? '0' + minutes : minutes),
-          ss = ((seconds < 10) ? '0' + seconds : seconds),
-          ms = ('00' + milliseconds).slice(-3);
+          hh = ((hour < 10) ? "0" + hour : hour),
+          mm = ((minutes < 10) ? "0" + minutes : minutes),
+          ss = ((seconds < 10) ? "0" + seconds : seconds),
+          ms = ("00" + milliseconds).slice(-3);
 
-        return `[${hh}:${mm}:${ss}.${ms}](${tz})`
+        return `[${hh}:${mm}:${ss}.${ms}](${tz})`;
       }
 
-      return formatTime(new Date())
+      return formatTime(new Date());
     },
 
     toConsole: function (payload) {
-      if (this._console !== 'false') {
-        console.log( `${this.timestamp()} ${payload}` )
+      if (this._console !== "false") {
+        console.log(`${this.timestamp()} ${payload}`);
       }
     },
 
     toFile: function (content) {
-      if (this._file !== 'false') {
+      if (this._file !== "false") {
         let
           file = `${this.log.datestamp()}.log`,
           path = this._directory;
 
-          fs.writeFile(path + file, `${this.timestamp()} ${content}\n`, { flag: 'a+' }, err => {
-            if (err) console.log(error)
+          fs.writeFile(path + file, `${this.timestamp()} ${content}\n`, { flag: "a+" }, err => {
+            if (err) console.log(error);
           })
       }
     },
@@ -81,14 +83,14 @@ const logger = {
 
     Object.entries(obj).forEach(([key, value]) => {
       if (regExp.test(key) === true) controller = key;
-    })
+    });
 
     msg = `${req.baseUrl} => ${controller} => ${req.method}(${req.url})`;
 
-    this.log.toFile(msg)
-    this.log.toConsole(msg)
-  }
+    this.log.toFile(msg);
+    this.log.toConsole(msg);
+  },
 
 }
 
-export default logger
+export default logger;

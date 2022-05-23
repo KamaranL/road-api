@@ -1,4 +1,4 @@
-"use-strict";
+"use strict";
 
 import UserController from "../controllers/userController.js";
 import logger from "../utils/logger.js";

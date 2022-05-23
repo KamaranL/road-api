@@ -1,4 +1,4 @@
-"use-strict";
+"use strict";
 
 import GroupController from "../controllers/groupController.js";
 import logger from "../utils/logger.js";

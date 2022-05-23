@@ -1,4 +1,4 @@
-"use-strict";
+"use strict";
 
 import activeDirectory from "../utils/activedirectory.js";
 let ad = activeDirectory;

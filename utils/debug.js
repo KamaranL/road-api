@@ -1,4 +1,4 @@
-"use-strict";
+"use strict";
 
 import { config } from "dotenv"; config();
 import { env } from "process";
@@ -7,15 +7,15 @@ import activeDirectory from "../utils/activedirectory.js";
 const debug = {
 
   dotenv: (req, res) => {
-    res.json(env)
+    res.json(env);
   },
 
   util: {
 
     activedirectory: (req, res) => {
       activeDirectory.getRootDSE((err, result) => {
-        if (err) res.json(err).status(500)
-        else res.json(result).status(200)
+        if (err) res.json(err).status(500);
+        else res.json(result).status(200);
       });
     },
 
@@ -38,7 +38,7 @@ const debug = {
           "headersSent": res.headersSent,
           "locals": res.locals,
         }
-      })
+      });
     },
 
   }
