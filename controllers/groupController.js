@@ -37,7 +37,7 @@ class GroupController {
   getAllGroups = (req, res) => {
     ad.findGroups("cn=*", (err, groups) => {
       if (err) res.status(500).json(err);
-      if (!groups) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
+      if (!groups) res.status(404).json({ "code": res.statusCode });
       else res.json(groups);
     })
   }

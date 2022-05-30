@@ -8,38 +8,41 @@ class ContactController {
   name = "ContactController"
 
   getContact = (req, res) => {
-    ad.findUser(req.params.sAMAccountName, (err, user) => {
+    let filter = `(&(objectClass=contact)(cn=${req.params.cn}))`;
+    ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
-      if (!user) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.sAMAccountName}' not found`, "params": req.params });
-      else res.json(user);
+      if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
+      else res.json(results.users[0]);
     })
   }
 
   getContactAttribute = (req, res) => {
-    ad.findUser(req.params.sAMAccountName, (err, user) => {
+    let filter = `(&(objectClass=contact)(cn=${req.params.cn}))`;
+    ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
-      if (!user) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.sAMAccountName}' not found`, "params": req.params });
+      if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
       else
         if (req.params.attribute)
-          if (!user[req.params.attribute]) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.attribute}' not found.`, "params": req.params });
-          else res.json(user[req.params.attribute]);
+          if (!results.users[0][req.params.attribute]) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.attribute}' not found.`, "params": req.params });
+          else res.json(results.users[0][req.params.attribute]);
     })
   }
 
   queryContacts = (req, res) => {
-    let query = `(&(objectClass=user)(${req.params.query}))`
-    ad.findUsers(query, (err, users) => {
+    let filter = `(&(objectClass=contact)(${req.params.query}))`;
+    ad.findUsers(filter, (err, contacts) => {
       if (err) res.status(500).json(err);
-      if (!users) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.query}' not found`, "params": req.params });
-      else res.json(users);
+      if (!contacts) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.query}' not found`, "params": req.params });
+      else res.json(contacts);
     })
   }
 
   getAllContacts = (req, res) => {
-    ad.findUsers("cn=*", (err, users) => {
+    let filter = `(&(objectClass=contact)(cn=*))`;
+    ad.findUsers(filter, (err, contacts) => {
       if (err) res.status(500).json(err);
-      if (!users) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.sAMAccountName}' not found`, "params": req.params });
-      else res.json(users);
+      if (!contacts) res.status(404).json({ "code": res.statusCode });
+      else res.json(contacts);
     })
   }
 

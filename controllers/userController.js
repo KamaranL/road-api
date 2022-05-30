@@ -27,8 +27,8 @@ class UserController {
   }
 
   queryUsers = (req, res) => {
-    let query = `(&(objectClass=user)(${req.params.query}))`
-    ad.findUsers(query, (err, users) => {
+    let filter = `(&(objectClass=user)(${req.params.query}))`;
+    ad.findUsers(filter, (err, users) => {
       if (err) res.status(500).json(err);
       if (!users) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.query}' not found`, "params": req.params });
       else res.json(users);
@@ -36,9 +36,10 @@ class UserController {
   }
 
   getAllUsers = (req, res) => {
-    ad.findUsers("cn=*", (err, users) => {
+    let filter = `(&(objectClass=user)(cn=*))`;
+    ad.findUsers(filter, (err, users) => {
       if (err) res.status(500).json(err);
-      if (!users) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.sAMAccountName}' not found`, "params": req.params });
+      if (!users) res.status(404).json({ "code": res.statusCode });
       else res.json(users);
     })
   }

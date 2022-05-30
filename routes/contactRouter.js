@@ -17,8 +17,8 @@ class ContactRouter {
     })
     .get("/", contactController.getAllContacts)
     .get("/_query.:query", contactController.queryContacts)
-    .get("/:sAMAccountName.:attribute", contactController.getContactAttribute)
-    .get("/:sAMAccountName", contactController.getContact);
+    .get("/:cn.:attribute", contactController.getContactAttribute)
+    .get("/:cn", contactController.getContact);
 
 }
 
