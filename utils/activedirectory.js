@@ -12,7 +12,8 @@ const activeDirectory = new ActiveDirectory({
   password: env.AD2_PASS,
   attributes: {
     user: [],
-    group: [ "dn", "cn", "description", "member", "distinguishedName", "objectCategory" ],
+    group: ["dn", "cn", "description", "member", "distinguishedName", "objectCategory"],
+    other: [],
   },
 
 });
