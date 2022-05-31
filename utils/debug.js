@@ -10,12 +10,9 @@ let router = express.Router({ mergeParams: true });
 class Debug {
 
   routes = router
-    .get("/activedirectory", (req, res) => {
-      activeDirectory.getRootDSE((err, result) => {
-        if (err) res.json(err).status(500);
-        else res.json(result);
-      });
-    })
+    // .use("/activedirectory", (req, res) => {
+      // res.send(activeDirectory.authenticate())
+    // })
     .get("/dotenv.:variable", (req, res) => {
       if (req.params.variable)
         if (!env[req.params.variable]) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.variable}' not found.`, "params": req.params });
