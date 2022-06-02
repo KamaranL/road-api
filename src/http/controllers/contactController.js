@@ -9,6 +9,7 @@ class ContactController {
 
   getContact = (req, res) => {
     let filter = `(&(objectClass=contact)(cn=${req.params.cn}))`;
+
     ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
       if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
@@ -18,6 +19,7 @@ class ContactController {
 
   getContactAttribute = (req, res) => {
     let filter = `(&(objectClass=contact)(cn=${req.params.cn}))`;
+
     ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
       if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
@@ -30,6 +32,7 @@ class ContactController {
 
   queryContacts = (req, res) => {
     let filter = `(&(objectClass=contact)(${req.params.query}))`;
+
     ad.findUsers(filter, (err, contacts) => {
       if (err) res.status(500).json(err);
       if (!contacts) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.query}' not found`, "params": req.params });
@@ -39,6 +42,7 @@ class ContactController {
 
   getAllContacts = (req, res) => {
     let filter = `(&(objectClass=contact)(cn=*))`;
+
     ad.findUsers(filter, (err, contacts) => {
       if (err) res.status(500).json(err);
       if (!contacts) res.status(404).json({ "code": res.statusCode });

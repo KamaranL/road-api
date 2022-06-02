@@ -9,6 +9,7 @@ class ComputerController {
 
   getComputer = (req, res) => {
     let filter = `(&(objectClass=computer)(cn=${req.params.cn}))`;
+
     ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
       if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
@@ -18,6 +19,7 @@ class ComputerController {
 
   getComputerAttribute = (req, res) => {
     let filter = `(&(objectClass=computer)(cn=${req.params.cn}))`;
+
     ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
       if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.cn}' not found`, "params": req.params });
@@ -30,6 +32,7 @@ class ComputerController {
 
   queryComputers = (req, res) => {
     let filter = `(&(objectClass=computer)(${req.params.query}))`;
+
     ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
       if (!results) res.status(404).json({ "code": res.statusCode, "message": `'${req.params.query}' not found`, "params": req.params });
@@ -39,6 +42,7 @@ class ComputerController {
 
   getAllComputers = (req, res) => {
     let filter = `(&(objectClass=computer)(cn=*))`;
+
     ad.find(filter, (err, results) => {
       if (err) res.status(500).json(err);
       if (!results) res.status(404).json({ "code": res.statusCode });
