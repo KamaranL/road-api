@@ -15,35 +15,28 @@ const logger = {
     _file: env.NODE_LOG_FILE,
 
     datestamp: () => {
-
       let formatDate = date => {
         let
           year = date.getFullYear(),
           month = date.getMonth(),
-          day = date.getDate();
-
-        let
+          day = date.getDate(),
           yyyy = ((year < 10) ? "0" + year : year),
           MM = ((month < 10) ? "0" + month : month),
           dd = ((day < 10) ? "0" + day : day);
 
         return `${yyyy}-${MM}-${dd}`;
       }
-
       return formatDate(new Date());
     },
 
     timestamp: () => {
-
       let formatTime = date => {
         let
           hour = date.getHours(),
           minutes = date.getMinutes(),
           seconds = date.getSeconds(),
           milliseconds = date.getMilliseconds(),
-          tz = `UTC-0${(date.getTimezoneOffset()/60)}.00`;
-
-        let
+          tz = `UTC-0${(date.getTimezoneOffset()/60)}.00`,
           hh = ((hour < 10) ? "0" + hour : hour),
           mm = ((minutes < 10) ? "0" + minutes : minutes),
           ss = ((seconds < 10) ? "0" + seconds : seconds),
@@ -51,14 +44,11 @@ const logger = {
 
         return `[${hh}:${mm}:${ss}.${ms}](${tz})`;
       }
-
       return formatTime(new Date());
     },
 
     toConsole: function (payload) {
-      if (this._console !== "false") {
-        console.log(`${this.timestamp()} ${payload}`);
-      }
+      if (this._console !== "false") console.log(`${this.timestamp()} ${payload}`);
     },
 
     toFile: function (content) {

@@ -12,8 +12,9 @@ class Debug {
   routes = router
     .use("/", (req, res) => {
       let results = [];
-      router.stack.forEach(stackObj => {
-        if (stackObj.route) results.push(stackObj.route.path)
+
+      router.stack.forEach(routeObject => {
+        if (routeObject.route) results.push(routeObject.route.path)
       })
       res.send(results);
     })
