@@ -1,12 +1,22 @@
 # road-api (Read-Only Active Directory API)
 
-A super-simple, backend application built on Node.js with the Express framework that returns Active Directory objects and attributes. This application relies heavily on the [activedirectory2](https://www.npmjs.com/package/activedirectory2) package.
+A super-simple, Node.js backend application built with the Express framework that returns Active Directory objects and attributes. This application relies heavily on the [activedirectory2](https://www.npmjs.com/package/activedirectory2) package.
 
 ## Installation
 
 1. Clone repository to desired location.
 
-  * if using
+    * If using a front-end framework, you can serve an "index.html" document by placing it in the root of the project folder.
+
+2. Rename the ".env.sample" file to ".env" and edit the configuration to your liking.
+
+3. Explicitly from the command line:
+
+      1. Navigate to the root of the project folder.
+
+      2. Install dependancies by running `npm install`
+
+      3. Launch the application with `npm run [dev|prod]`
 
 ## Configuration
 
