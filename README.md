@@ -2,6 +2,12 @@
 
 A super-simple, backend application built on Node.js with the Express framework that returns Active Directory objects and attributes. This application relies heavily on the [activedirectory2](https://www.npmjs.com/package/activedirectory2) package.
 
+## Installation
+
+1. Clone repository to desired location.
+
+  * if using
+
 ## Configuration
 
 The following variables in the .env file are required to connect to your domain.

@@ -13,9 +13,7 @@ const os = {
       for (let name of Object.keys(nets)) {
         for (let net of nets[name]) {
           if (net.family === "IPv4") {
-            if (!results[name]) {
-              results[name] = [];
-            }
+            if (!results[name]) results[name] = [];
             results[name].push(net);
           }
         }

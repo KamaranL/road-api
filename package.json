@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "run-script-os",
     "dev:win32": "cls && SET DEBUG=road-api:* | npx nodemon app.js",
-    "dev:nix": "clear && SET DEBUG=road-api:* | npx nodemon app.js"
+    "dev:nix": "clear && SET DEBUG=road-api:* | npx nodemon app.js",
+    "prod": "node app.js"
   },
   "author": "Kam Layne",
   "license": "MIT",
