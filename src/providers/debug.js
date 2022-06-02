@@ -1,9 +1,8 @@
 "use strict";
 
 import { config } from "dotenv"; config();
-import { env } from "process";
+import { cwd, env } from "process";
 import express from "express";
-import activeDirectory from "../utils/activedirectory.js";
 
 let router = express.Router({ mergeParams: true });
 

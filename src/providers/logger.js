@@ -2,7 +2,7 @@
 
 import { config } from "dotenv"; config();
 import { env } from "process";
-import fs from "node:fs";
+import fs from "fs";
 
 const logger = {
 
@@ -64,7 +64,7 @@ const logger = {
     toFile: function (content) {
       if (this._file !== "false") {
         let
-          file = `${this.log.datestamp()}.log`,
+          file = `${this.datestamp()}.log`,
           path = this._directory;
 
           fs.writeFile(path + file, `${this.timestamp()} ${content}\n`, { flag: "a+" }, err => {

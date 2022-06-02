@@ -1,13 +1,13 @@
 "use strict";
 
 import Debug from "./debug.js";
-import UserRouter from "../routes/userRouter.js";
-import GroupRouter from "../routes/groupRouter.js";
-import ContactRouter from "../routes/contactRouter.js";
-import ComputerRouter from "../routes/computerRouter.js";
+import UserRouter from "../http/routes/userRouter.js";
+import GroupRouter from "../http/routes/groupRouter.js";
+import ContactRouter from "../http/routes/contactRouter.js";
+import ComputerRouter from "../http/routes/computerRouter.js";
 import express from "express";
 
-let appRouter = express.Router({ mergeParams: true });
+let router = express.Router({ mergeParams: true });
 
 const
   debug = new Debug(),
@@ -16,11 +16,11 @@ const
   contactRouter = new ContactRouter(),
   computerRouter = new ComputerRouter();
 
-appRouter
+router
   .use("/debug", debug.routes)
   .use("/user", userRouter.routes)
   .use("/group", groupRouter.routes)
   .use("/contact", contactRouter.routes)
   .use("/computer", computerRouter.routes);
 
-export default appRouter;
+export default router;

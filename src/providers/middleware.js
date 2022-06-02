@@ -1,13 +1,13 @@
 "use strict";
 
 import bodyParser from "body-parser";
-import appRouter from "../utils/router.js";
+import router from "./router.js";
 
 const middlewares = [
 
   bodyParser.json(),
   bodyParser.urlencoded({ extended: false }),
-  appRouter,
+  router,
 
 ];
 

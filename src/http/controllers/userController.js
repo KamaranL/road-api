@@ -1,6 +1,6 @@
 "use strict";
 
-import activeDirectory from "../utils/activedirectory.js";
+import activeDirectory from "../../providers/activedirectory.js";
 let ad = activeDirectory;
 
 class UserController {

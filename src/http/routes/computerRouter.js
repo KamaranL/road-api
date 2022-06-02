@@ -1,7 +1,7 @@
 "use strict";
 
 import ComputerController from "../controllers/computerController.js";
-import logger from "../utils/logger.js";
+import logger from "../../providers/logger.js";
 import express from "express";
 
 let router = express.Router({ mergeParams: true });

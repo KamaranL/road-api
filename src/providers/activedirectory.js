@@ -2,7 +2,7 @@
 
 import { config } from "dotenv"; config();
 import { env } from "process";
-import fs from "node:fs";
+import fs from "fs";
 import ActiveDirectory from "activedirectory2";
 
 const tls = {

@@ -1,11 +1,13 @@
 "use strict";
 
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import { env, chdir, cwd } from "process"; chdir(dirname(fileURLToPath(import.meta.url)));
 import { config } from "dotenv"; config();
-import { env } from "process";
 import express from "express";
-import middlewares from "./utils/middleware.js";
-import appRouter from "./utils/router.js";
-import os from "./utils/os.js";
+import middlewares from "./src/providers/middleware.js";
+import router from "./src/providers/router.js";
+import os from "./src/providers/os.js";
 
 const app = express();
 
@@ -14,7 +16,8 @@ middlewares.forEach(middleware => {
 });
 
 app
-  .use("/api", appRouter, (req, res, next) => {
+  .use("/", express.static("index.html"))
+  .use("/api", router, (req, res, next) => {
     res.status(200).type("application/json");
     next();
   })
@@ -23,10 +26,12 @@ app
     next();
   })
   .listen(env.NODE_PORT, env.NODE_IPV4, () => {
-    console.log(`${env.APP_NAME} is starting...`);
-    Object.entries(os.net.interfaces()).forEach(entry => {
-      const [adapter, props] = entry;
-      console.log(`  [interface] "${adapter}" is listening at http://${props[0].address}:${env.NODE_PORT}`);
-    });
-    console.log("\n");
+    if (env.NODE_ENV === "dev") {
+      console.log(`${env.APP_NAME} is starting from ${cwd()}`);
+      Object.entries(os.net.interfaces()).forEach(entry => {
+        const [adapter, props] = entry;
+        console.log(`  [interface] "${adapter}" is listening at http://${props[0].address}:${env.NODE_PORT}`);
+      });
+      console.log("\n");
+    }
   });
