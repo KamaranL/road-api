@@ -48,7 +48,9 @@ AD2_TLS_ENFORCE=true                    # if CA is not specified, reject TLS con
 ## Endpoints
 
 ```text
-+--/api
++--/ => returns index.html
+|
++--/api (required prefix)
 |
 |  +--/user => returns all users
 |
